@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Paws & Preferences</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app-container">
+    <div id="header">Paws & Preferences 🐾</div>
+    
+    <div id="tip-like" class="side-tip">LIKE!</div>
+    <div id="tip-dislike" class="side-tip">NOPE!</div>
+    
+    <div id="card-stack"></div>
+    
+    <div id="summary">
+        <h2>Your Cat Preferences Summary</h2>
+        
+        <div class="summary-section" id="liked-section">
+            <h3 class="section-title liked-title">
+                <span class="heart-icon">❤️</span>
+                Liked Cats: <span id="liked-count">0</span>
+            </h3>
+            <div id="liked-cats" class="cats-container"></div>
+        </div>
+        
+        <div class="summary-section" id="disliked-section">
+            <h3 class="section-title disliked-title">
+                <span class="dislike-icon">👎</span>
+                Disliked Cats: <span id="disliked-count">0</span>
+            </h3>
+            <div id="disliked-cats" class="cats-container"></div>
+        </div>
+        
+        <button id="restart-btn" class="restart-btn">Start Over</button>
+    </div>
+</div>
+<script src="cat.js"></script>
+</body>
+</html>
