@@ -11,7 +11,6 @@ const tipDislike = document.getElementById("tip-dislike");
 let liked = [];
 let currentCard = null;
 
-// Generate random cat images from CATAAS
 const cats = Array.from({ length: TOTAL_CATS }, () =>
     `https://cataas.com/cat?width=400&height=500&random=${Math.random()}&t=${Date.now()}`
 );
@@ -53,23 +52,18 @@ function addSwipe(card) {
         const dx = currentX - startX;
         const rotation = dx * 0.08;
         
-        // Use translate3d for hardware acceleration
         card.style.transform = `translate3d(${dx}px, 0, 0) rotate(${rotation}deg)`;
 
-        // Get background elements for this specific card
         const likeBg = card.querySelector('.swipe-like-bg');
         const dislikeBg = card.querySelector('.swipe-dislike-bg');
         
-        // Update side tips and backgrounds
         if (dx > 30) {
             let strength = Math.min(dx / 120, 1);
             
-            // Show like tip
             tipLike.style.opacity = strength;
             tipLike.style.transform = `translateY(-50%) rotate(-10deg) scale(${1 + strength * 0.4})`;
             tipDislike.style.opacity = 0;
             
-            // Show like background
             if (likeBg) {
                 likeBg.style.opacity = strength;
                 likeBg.style.transform = `scale(${1 + strength * 0.05})`;
@@ -79,12 +73,10 @@ function addSwipe(card) {
         } else if (dx < -30) {
             let strength = Math.min(Math.abs(dx) / 120, 1);
             
-            // Show dislike tip
             tipDislike.style.opacity = strength;
             tipDislike.style.transform = `translateY(-50%) rotate(10deg) scale(${1 + strength * 0.4})`;
             tipLike.style.opacity = 0;
             
-            // Show dislike background
             if (dislikeBg) {
                 dislikeBg.style.opacity = strength;
                 dislikeBg.style.transform = `scale(${1 + strength * 0.05})`;
@@ -92,7 +84,6 @@ function addSwipe(card) {
             if (likeBg) likeBg.style.opacity = 0;
             
         } else {
-            // Hide both if not swiping enough
             tipLike.style.opacity = 0;
             tipDislike.style.opacity = 0;
             
@@ -105,13 +96,11 @@ function addSwipe(card) {
         if (!dragging) return;
         dragging = false;
 
-        // Hide tips
         tipLike.style.opacity = 0;
         tipDislike.style.opacity = 0;
 
         const dx = currentX - startX;
         
-        // Get backgrounds for final reset
         const likeBg = card.querySelector('.swipe-like-bg');
         const dislikeBg = card.querySelector('.swipe-dislike-bg');
 
@@ -138,7 +127,6 @@ function addSwipe(card) {
         }
     };
 
-    // Add event listeners with better handling
     card.addEventListener("mousedown", start);
     card.addEventListener("mouseleave", end);
     
@@ -219,6 +207,5 @@ function showSummary() {
 // Initialize
 createCards();
 
-// Add some debug info
 console.log("Paws & Preferences app loaded!");
 console.log("Swipe left for NOPE, right for LIKE");
